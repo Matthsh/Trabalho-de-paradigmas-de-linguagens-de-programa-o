@@ -1,5 +1,5 @@
 /* Faça um relatório técnico contendo uma análise dos diferentes tipos
-e precisões numéricas com short int, float e double na realização de
+e precisões numéricas com int int, float e double na realização de
 operações de multiplicação de matrizes. */
 
 // Relatório da linguagem C
@@ -7,30 +7,88 @@ operações de multiplicação de matrizes. */
 #include <stdlib.h>
 #include <time.h>
 
+void multiplicaMatrizesF(float matriz1[3][3], float matriz2[3][3]);
+void printaMatrizF(float matriz[3][3]);
+float GeradordeImprobabilidadeInfinitaF();
+
+void multiplicaMatrizesD(double matriz1[3][3], double matriz2[3][3]);
+void printaMatrizD(double matriz[3][3]);
+double GeradordeImprobabilidadeInfinitaD();
+
 void main(void)
 {
-    short matriz1[3][3] = {
-        {GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita()},
-        {GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita()},
-        {GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita()}};
-    short matriz2[3][3] = {
-        {GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita()},
-        {GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita()},
-        {GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita(), GeradordeImprobabilidadeInfinita()}};
+    int matriz1[3][3] = {
+        {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
+        {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
+        {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()}};
+    int matriz2[3][3] = {
+        {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
+        {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
+        {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()}};
     
-    printf("Matrizes short");
-    printaMatriz(matriz1);
-    printaMatriz(matriz2);
+    printf("Matrizes int\n");
+    printf("Matriz 1: \n");
+    printaMatrizS(matriz1);
+    printf("----------------\n");
+    printf("Matriz 2: \n");
+    printaMatrizS(matriz2);
+    printf("----------------\n");
+    printf("Matriz resultante: \n");
+    multiplicaMatrizesS(matriz1, matriz2);
+
+
+    float matriz3[3][3] = {
+        {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
+        {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
+        {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()}};
+    float matriz4[3][3] = {
+        {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
+        {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
+        {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()}};
+    
+    printf("\nMatrizes float\n");
+    printf("Matriz 1: \n");
+    printaMatrizF(matriz3);
+    printf("----------------\n");
+    printf("Matriz 2: \n");
+    printaMatrizF(matriz4);
+    printf("----------------\n");
+    printf("Matriz resultante: \n");
+    multiplicaMatrizesF(matriz3, matriz4);
+
+
+    double matriz5[3][3] = {
+        {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
+        {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
+        {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()}};
+    double matriz6[3][3] = {
+        {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
+        {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
+        {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()}};
+    
+
+    printf("\nMatrizes double\n");
+    printf("Matriz 1: \n");
+    printaMatrizD(matriz5);
+    printf("----------------\n");
+    printf("Matriz 2: \n");
+    printaMatrizD(matriz6);
+    printf("----------------\n");
+    printf("Matriz resultante: \n");
+    multiplicaMatrizesD(matriz5, matriz6);
+
 }
 
-int GeradordeImprobabilidadeInfinita()
+// Setor dos int
+
+int GeradordeImprobabilidadeInfinitaS()
 {
     srand(time(NULL) - rand());
     int resp = rand() % 100;
     return resp;
 }
 
-void printaMatriz(short matriz[3][3])
+void printaMatrizS(int matriz[3][3])
 {
     for (int x = 0; x < 3; x++)
     {
@@ -38,17 +96,17 @@ void printaMatriz(short matriz[3][3])
         {
             if (y != 2)
             {
-                printf(" %2d ", matriz[x][y]);
+                printf(" %5d ", matriz[x][y]);
             }
             else
             {
-                printf(" %2d \n", matriz[x][y]);
+                printf(" %5d \n", matriz[x][y]);
             }
         }
     }
 }
 
-int multiplicaMatrizes(int matriz1[3][3], int matriz2[3][3])
+void multiplicaMatrizesS(int matriz1[3][3], int matriz2[3][3])
 {
     int matrizRes[3][3];
     for (int x = 0; x < 3; x++)
@@ -62,7 +120,99 @@ int multiplicaMatrizes(int matriz1[3][3], int matriz2[3][3])
             }
         }
     }
-    return matrizRes;
+    printaMatrizS(matrizRes);
+}
+
+
+
+//Setor dos float
+
+float GeradordeImprobabilidadeInfinitaF()
+{
+    srand(time(NULL) - rand());
+    float resp = (((float) rand()) / ((float) RAND_MAX)) * 100;
+    return resp;
+}
+
+void printaMatrizF(float matriz[3][3])
+{
+    for (int x = 0; x < 3; x++)
+    {
+        for (int y = 0; y < 3; y++)
+        {
+            if (y != 2)
+            {
+                printf(" %5f ", matriz[x][y]);
+            }
+            else
+            {
+                printf(" %5f \n", matriz[x][y]);
+            }
+        }
+    }
+}
+
+void multiplicaMatrizesF(float matriz1[3][3], float matriz2[3][3])
+{
+    float matrizRes[3][3];
+    for (int x = 0; x < 3; x++)
+    {
+        for (int y = 0; y < 3; y++)
+        {
+            matrizRes[x][y] = 0;
+            for (int z = 0; z < 3; z++)
+            {
+                matrizRes[x][y] += matriz1[x][z] * matriz2[z][y];
+            }
+        }
+    }
+    printaMatrizF(matrizRes);
+}
+
+
+
+//Setor dos double
+
+double GeradordeImprobabilidadeInfinitaD()
+{
+    srand(time(NULL) - rand());
+    double resp = (((double) rand()) / ((double) RAND_MAX)) * 100;
+    return resp;
+}
+
+void printaMatrizD(double matriz[3][3])
+{
+    for (int x = 0; x < 3; x++)
+    {
+        for (int y = 0; y < 3; y++)
+        {
+            if (y != 2)
+            {
+                printf(" %.16lf ", matriz[x][y]);
+            }
+            else
+            {
+                printf(" %.16lf \n", matriz[x][y]);
+            }
+        }
+    }
+}
+
+void multiplicaMatrizesD(double matriz1[3][3], double matriz2[3][3])
+{
+    double matrizRes[3][3];
+    for (int x = 0; x < 3; x++)
+    {
+        for (int y = 0; y < 3; y++)
+        {
+            matrizRes[x][y] = 0;
+            for (int z = 0; z < 3; z++)
+            {
+                matrizRes[x][y] += matriz1[x][z] * matriz2[z][y];
+            }
+        }
+    }
+    printaMatrizD(matrizRes);
 }
 
 /* - Realize experimentos comparando os tempos de execução das linguagens

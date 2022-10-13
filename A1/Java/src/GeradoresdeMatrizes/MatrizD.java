@@ -27,9 +27,11 @@ public class MatrizD {
 		for (int x = 0; x < 3; x++) {
 			for (int y = 0; y < 3; y++) {
 				if (y != 2) {
-					System.out.printf(" %16.15f ", matriz[x][y]);
+					System.out.print(matriz[x][y]);
+					System.out.print("  ");
 				} else {
-					System.out.printf(" %16.15f \n", matriz[x][y]);
+					System.out.print(matriz[x][y]);
+					System.out.println("\n");
 				}
 			}
 		}
