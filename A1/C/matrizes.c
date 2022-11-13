@@ -15,8 +15,13 @@ void multiplicaMatrizesD(double matriz1[3][3], double matriz2[3][3]);
 void printaMatrizD(double matriz[3][3]);
 double GeradordeImprobabilidadeInfinitaD();
 
-void main(void)
+void main()
 {
+    float tempo;
+    time_t t_ini, t_fim;
+
+    t_ini = time(NULL);
+    for(int n = 0; n < 10; n++){
     int matriz1[3][3] = {
         {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
         {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
@@ -25,17 +30,6 @@ void main(void)
         {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
         {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()},
         {GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS(), GeradordeImprobabilidadeInfinitaS()}};
-    
-    printf("Matrizes int\n");
-    printf("Matriz 1: \n");
-    printaMatrizS(matriz1);
-    printf("----------------\n");
-    printf("Matriz 2: \n");
-    printaMatrizS(matriz2);
-    printf("----------------\n");
-    printf("Matriz resultante: \n");
-    multiplicaMatrizesS(matriz1, matriz2);
-
 
     float matriz3[3][3] = {
         {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
@@ -45,17 +39,6 @@ void main(void)
         {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
         {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()},
         {GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF(), GeradordeImprobabilidadeInfinitaF()}};
-    
-    printf("\nMatrizes float\n");
-    printf("Matriz 1: \n");
-    printaMatrizF(matriz3);
-    printf("----------------\n");
-    printf("Matriz 2: \n");
-    printaMatrizF(matriz4);
-    printf("----------------\n");
-    printf("Matriz resultante: \n");
-    multiplicaMatrizesF(matriz3, matriz4);
-
 
     double matriz5[3][3] = {
         {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
@@ -65,7 +48,28 @@ void main(void)
         {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
         {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()},
         {GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD(), GeradordeImprobabilidadeInfinitaD()}};
+
     
+
+    printf("Matrizes short\n");
+    printf("Matriz 1: \n");
+    printaMatrizS(matriz1);
+    printf("----------------\n");
+    printf("Matriz 2: \n");
+    printaMatrizS(matriz2);
+    printf("----------------\n");
+    printf("Matriz resultante: \n");
+    multiplicaMatrizesS(matriz1, matriz2);
+
+    printf("\nMatrizes float\n");
+    printf("Matriz 1: \n");
+    printaMatrizF(matriz3);
+    printf("----------------\n");
+    printf("Matriz 2: \n");
+    printaMatrizF(matriz4);
+    printf("----------------\n");
+    printf("Matriz resultante: \n");
+    multiplicaMatrizesF(matriz3, matriz4);
 
     printf("\nMatrizes double\n");
     printf("Matriz 1: \n");
@@ -77,6 +81,13 @@ void main(void)
     printf("Matriz resultante: \n");
     multiplicaMatrizesD(matriz5, matriz6);
 
+    }
+
+    t_fim = time(NULL);
+    tempo = difftime(t_fim, t_ini);
+    float media = tempo / 10;
+    printf("O tempo total de execucao da rotina 10x foi de: %f segundos\n", tempo);
+    printf("O tempo medio de execucao de cada rotinas foi de: %f millisegundos", media);
 }
 
 // Setor dos int
@@ -123,14 +134,12 @@ void multiplicaMatrizesS(int matriz1[3][3], int matriz2[3][3])
     printaMatrizS(matrizRes);
 }
 
-
-
-//Setor dos float
+// Setor dos float
 
 float GeradordeImprobabilidadeInfinitaF()
 {
     srand(time(NULL) - rand());
-    float resp = (((float) rand()) / ((float) RAND_MAX)) * 100;
+    float resp = (((float)rand()) / ((float)RAND_MAX)) * 100;
     return resp;
 }
 
@@ -169,14 +178,12 @@ void multiplicaMatrizesF(float matriz1[3][3], float matriz2[3][3])
     printaMatrizF(matrizRes);
 }
 
-
-
-//Setor dos double
+// Setor dos double
 
 double GeradordeImprobabilidadeInfinitaD()
 {
     srand(time(NULL) - rand());
-    double resp = (((double) rand()) / ((double) RAND_MAX)) * 100;
+    double resp = (((double)rand()) / ((double)RAND_MAX)) * 100;
     return resp;
 }
 
